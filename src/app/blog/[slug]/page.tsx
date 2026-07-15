@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
+import type { ComponentProps } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import CTASection from "@/components/CTASection";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import Tag from "@/components/Tag";
+
+const mdxComponents = {
+  table: (props: ComponentProps<"table">) => (
+    <div className="table-wrap">
+      <table {...props} />
+    </div>
+  ),
+};
 
 export async function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -48,7 +58,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </header>
 
       <article className="max-w-content mx-auto px-6 prose-dark space-y-6">
-        <MDXRemote source={post.content} />
+        <MDXRemote
+          source={post.content}
+          components={mdxComponents}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </article>
 
       <section className="max-w-content mx-auto px-6 mt-16 pt-12 border-t border-outline-variant/10">
