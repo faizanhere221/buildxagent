@@ -1,12 +1,18 @@
-export default function CTASection() {
+export default function CTASection({
+  title = "Ready to Scale?",
+  subheading = "Stop wasting hours on manual outreach. Let our agents build your pipeline for you.",
+}: {
+  title?: string;
+  subheading?: string;
+}) {
   return (
     <section className="px-6 py-section-mobile lg:py-section-desktop bg-surface-container-lowest">
       <div className="max-w-container mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 p-8 lg:p-16 rounded-2xl border border-outline-variant/20 space-y-6 text-center relative overflow-hidden">
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 blur-[80px] rounded-full" />
         <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-secondary/10 blur-[80px] rounded-full" />
-        <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface relative z-10">Ready to Scale?</h2>
+        <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface relative z-10">{title}</h2>
         <p className="text-body-sm text-on-surface-variant relative z-10 max-w-md mx-auto">
-          Stop wasting hours on manual outreach. Let our agents build your pipeline for you.
+          {subheading}
         </p>
         <a
           href="https://calendly.com/islam9039438/30min"

@@ -9,6 +9,9 @@ module.exports = {
     const priorities = {
       "/": 1.0,
       "/services": 0.9,
+      "/services/ai-personalized-demos": 0.85,
+      "/services/ai-digital-products": 0.85,
+      "/services/ai-legal-automation": 0.85,
       "/case-studies": 0.9,
       "/blog": 0.8,
       "/about": 0.7,

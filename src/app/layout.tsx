@@ -6,18 +6,18 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://buildxagent.com"),
-  title: { default: "BuildXAgent | AI Personalized Demo Systems for Agencies", template: "%s | BuildXAgent" },
-  description: "We build AI systems that scrape prospects, generate personalized demos with their business name, and sync everything to your CRM. 500+ demos per day.",
-  keywords: ["AI lead generation for agencies", "AI prospecting tool", "personalized demo automation", "GoHighLevel lead generation", "AI estimator for businesses"],
+  title: { default: "AI Automation Agency for Businesses | BuildXAgent", template: "%s | BuildXAgent" },
+  description: "We build AI automation systems for agencies and businesses. Personalized demo generation, AI digital products, and document processing automation. Results in 2-3 weeks.",
+  keywords: ["AI automation agency", "AI automation for businesses", "AI systems for agencies", "personalized demo automation", "AI digital products", "AI document processing"],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://buildxagent.com",
     siteName: "BuildXAgent",
-    title: "BuildXAgent | AI Personalized Demo Systems for Agencies",
-    description: "AI systems that generate 500+ personalized demos per day for agency owners.",
+    title: "AI Automation Agency for Businesses | BuildXAgent",
+    description: "We build AI automation systems for agencies and businesses. Personalized demo generation, AI digital products, and document processing automation.",
   },
-  twitter: { card: "summary_large_image", title: "BuildXAgent", description: "AI Personalized Demo Systems for Agencies" },
+  twitter: { card: "summary_large_image", title: "BuildXAgent", description: "AI Automation Agency for Businesses" },
   robots: { index: true, follow: true },
   alternates: { canonical: "https://buildxagent.com" },
 };
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               founder: { "@type": "Person", name: "Faizan Islam" },
               contactPoint: { "@type": "ContactPoint", email: "hello@buildxagent.com", contactType: "sales" },
               areaServed: ["United States", "United Kingdom", "Australia", "United Arab Emirates", "Jordan"],
-              description: "AI-powered personalized demo generation systems for agency owners.",
+              description: "AI automation systems for agencies and businesses: personalized demo generation, AI digital products, and document processing automation.",
             }),
           }}
         />
