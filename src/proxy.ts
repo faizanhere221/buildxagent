@@ -3,19 +3,28 @@ import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host") || "";
-  const url = request.nextUrl.clone();
+  const pathname = request.nextUrl.pathname;
+  let needsRedirect = false;
 
+  let newHost = host;
   if (host === "www.buildxagent.com" || host.startsWith("www.buildxagent.com:")) {
-    url.host = "buildxagent.com";
-    return NextResponse.redirect(url, 301);
+    newHost = "buildxagent.com";
+    needsRedirect = true;
   }
 
-  // next.config.ts sets skipTrailingSlashRedirect: true (needed so the legacy
-  // WordPress URL redirect can return an exact 301), so replicate the site's
-  // default trailing-slash-stripping behavior here for every other route.
-  if (url.pathname !== "/" && url.pathname.endsWith("/")) {
-    url.pathname = url.pathname.slice(0, -1);
-    return NextResponse.redirect(url, 308);
+  let newPathname = pathname;
+  if (pathname !== "/" && pathname.endsWith("/")) {
+    newPathname = pathname.slice(0, -1);
+    needsRedirect = true;
+  }
+
+  if (needsRedirect) {
+    // Built as a plain string rather than mutating request.nextUrl.clone():
+    // NextURL's href/toString() does not reliably reflect a reassigned
+    // .pathname in this Next.js version, so a plain string sidesteps that.
+    const protocol = request.nextUrl.protocol;
+    const destination = `${protocol}//${newHost}${newPathname}${request.nextUrl.search}`;
+    return NextResponse.redirect(destination, 301);
   }
 
   return NextResponse.next();

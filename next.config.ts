@@ -8,6 +8,23 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   async redirects() {
     return [
+      // www requests are matched first and sent straight to the final
+      // non-www destination so they resolve in a single hop instead of
+      // chaining into the www->non-www redirect in src/proxy.ts.
+      {
+        source: "/how-to-generate-leads-for-gohighlevel-agency",
+        has: [{ type: "host", value: "www.buildxagent.com" }],
+        destination:
+          "https://buildxagent.com/blog/how-to-generate-leads-for-gohighlevel-agency",
+        statusCode: 301,
+      },
+      {
+        source: "/how-to-generate-leads-for-gohighlevel-agency/",
+        has: [{ type: "host", value: "www.buildxagent.com" }],
+        destination:
+          "https://buildxagent.com/blog/how-to-generate-leads-for-gohighlevel-agency",
+        statusCode: 301,
+      },
       {
         source: "/how-to-generate-leads-for-gohighlevel-agency",
         destination: "/blog/how-to-generate-leads-for-gohighlevel-agency",
