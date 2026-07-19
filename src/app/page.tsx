@@ -8,7 +8,7 @@ const services = [
   {
     icon: "calculate",
     title: "AI Personalized Demo Systems",
-    desc: "We scrape 500+ prospects daily from Google Maps, generate a personalized demo with each business's name on a live URL, sync everything to your CRM, and trigger automated outreach. Your agency pitches hundreds of businesses per day on autopilot.",
+    desc: "We search out your prospects, generate a personalized demo with each business's name on a live URL, sync everything to your CRM, and trigger automated outreach. Your agency pitches hundreds of businesses on autopilot.",
     stat: "500+ demos/day · 35% conversion rate",
     href: "/services/ai-personalized-demos",
   },
@@ -44,10 +44,10 @@ const audiences = [
 const faqs = [
   { q: "What types of AI systems does BuildXAgent build?", a: "Three primary types. AI personalized demo systems for agency prospecting (scraping, demo generation, CRM sync, automated outreach). AI digital products for agencies to resell (calculators, analyzers, content tools). AI document processing systems for law firms and professional services (medical record extraction, demand letter generation, invoice automation)." },
   { q: "How long does a project take?", a: "Most systems go live in 2-3 weeks. The process covers discovery, architecture, development, testing, and launch. Complex enterprise builds with multiple integrations take 4-6 weeks." },
-  { q: "What results do your clients get?", a: "Optimo Agency generates 500+ personalized demos per day with a 35% conversion rate, producing $300K+ in revenue within 6 weeks. Synergy Legal processes documents 85% faster, saving 20+ hours per week. Results vary by system type, but most clients see 10-50x ROI within 90 days." },
+  { q: "What results do your clients get?", a: "Optimo Agency generates 500+ personalized demos per session with a 35% conversion rate, producing $10K+ in revenue within 6 weeks. Synergy Legal processes documents 85% faster, saving 20+ hours per week. Results vary by system type, but most clients see 10-50x ROI within 90 days." },
   { q: "What industries do you serve?", a: "Agency owners (GoHighLevel, AI/automation, digital marketing), law firms, professional services, SaaS startups, and any business processing documents or generating leads at scale. Our clients operate in the USA, UK, Australia, UAE, and Jordan." },
-  { q: "How much does a project cost?", a: "Projects start at $1,000. Pricing depends on system complexity, number of integrations, and scale requirements. Every project includes architecture, development, testing, launch, and 2 weeks of post-launch optimization." },
-  { q: "Do you offer ongoing support after launch?", a: "Yes. Every project includes 2 weeks of post-launch monitoring and optimization. For ongoing maintenance and scaling, we offer monthly retainer packages starting at $300/month." },
+  { q: "How much does a project cost?", a: "Pricing depends on system complexity, number of integrations, and scale requirements. Every project includes architecture, development, testing, launch, and 2 weeks of post-launch optimization." },
+  { q: "Do you offer ongoing support after launch?", a: "Yes. Every project includes 2 weeks of post-launch monitoring and optimization. For ongoing maintenance and scaling, we offer monthly retainer packages starting at $400/month." },
 ];
 
 export default function HomePage() {
@@ -161,11 +161,11 @@ export default function HomePage() {
               <p className="text-body-sm text-on-surface-variant max-w-2xl">What we built: Google Maps scraper → AI estimator demo generator → live URL deployment → GoHighLevel CRM sync → automated SMS outreach.</p>
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
                 {[
-                  { value: "500+", label: "DEMOS/DAY" },
+                  { value: "500+", label: "DEMOS/Session" },
                   { value: "35%", label: "CONVERSION" },
-                  { value: "$300K+", label: "REVENUE" },
+                  { value: "$10K+", label: "REVENUE" },
                   { value: "90%", label: "LESS MANUAL" },
-                  { value: "3 Wks", label: "DELIVERY" },
+                  { value: "3 Weeks", label: "DELIVERY" },
                 ].map((stat) => (
                   <div key={stat.label} className="p-4 bg-surface-container rounded-lg border border-outline-variant/10">
                     <p className="text-h3-mobile lg:text-h3-desktop font-bold text-secondary">{stat.value}</p>
