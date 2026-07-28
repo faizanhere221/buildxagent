@@ -1,9 +1,24 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+// Old WordPress install's admin/system paths. Google still has these indexed
+// from before the migration; respond 410 (Gone) rather than letting them
+// fall through to a redirect or a bare 404, so they get dropped from the index.
+const WORDPRESS_GONE_PATTERNS = [
+  /^\/wp-admin(\/.*)?$/,
+  /^\/wp-login\.php$/,
+  /^\/xmlrpc\.php$/,
+  /^\/wp-content(\/.*)?$/,
+];
+
 export function proxy(request: NextRequest) {
-  const host = request.headers.get("host") || "";
   const pathname = request.nextUrl.pathname;
+
+  if (WORDPRESS_GONE_PATTERNS.some((pattern) => pattern.test(pathname))) {
+    return new NextResponse("Gone", { status: 410 });
+  }
+
+  const host = request.headers.get("host") || "";
   let needsRedirect = false;
 
   let newHost = host;
@@ -13,7 +28,10 @@ export function proxy(request: NextRequest) {
   }
 
   let newPathname = pathname;
-  if (pathname !== "/" && pathname.endsWith("/")) {
+  if (pathname === "/sitemap_index.xml") {
+    newPathname = "/sitemap.xml";
+    needsRedirect = true;
+  } else if (pathname !== "/" && pathname.endsWith("/")) {
     newPathname = pathname.slice(0, -1);
     needsRedirect = true;
   }
