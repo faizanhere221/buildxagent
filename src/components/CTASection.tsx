@@ -1,6 +1,6 @@
 export default function CTASection({
-  title = "Ready to Scale?",
-  subheading = "Stop wasting hours on manual outreach. Let our agents build your pipeline for you.",
+  title = "Your Next Client Could Already Be Waiting",
+  subheading = "The only question is whether your competitors reach them first. Build an AI Sales System generating qualified opportunities around the clock.",
 }: {
   title?: string;
   subheading?: string;
