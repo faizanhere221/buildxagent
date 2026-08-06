@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
@@ -48,9 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-background text-on-surface font-sans selection:bg-secondary/30 selection:text-secondary overflow-x-hidden min-h-screen">
         <GoogleAnalytics />
-        <Navbar />
-        <main className="pt-[72px]">{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

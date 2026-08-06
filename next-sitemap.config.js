@@ -5,6 +5,7 @@ module.exports = {
   sitemapSize: 7000,
   changefreq: "weekly",
   priority: 0.7,
+  exclude: ["/proposal", "/proposal/*"],
   transform: async (config, path) => {
     const priorities = {
       "/": 1.0,
