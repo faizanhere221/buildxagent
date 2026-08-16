@@ -6,7 +6,7 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 export const metadata: Metadata = {
   metadataBase: new URL("https://buildxagent.com"),
   title: { default: "AI-Powered Outbound System That Books Sales Meetings | BuildXAgent", template: "%s | BuildXAgent" },
-  description: "We build AI outbound systems that find your ideal prospects, generate personalized interactive demos, send AI-written emails, and book qualified meetings. $300 setup + $500/mo.",
+  description: "We build AI outbound systems that find your ideal prospects, generate personalized interactive demos, send AI-written emails, and book qualified meetings. $400 setup + $500/mo.",
   keywords: ["AI outbound system", "personalized AI demos", "AI lead generation for agencies", "automated outbound", "AI sales system"],
   openGraph: {
     type: "website",

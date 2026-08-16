@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [formLoadedAt] = useState(() => Date.now());
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,6 +34,13 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="glass-card rounded-xl p-6 glow-subtle space-y-stack-md">
+      <input type="hidden" name="formLoadedAt" value={formLoadedAt} />
+      <div style={{ display: "none" }} aria-hidden="true">
+        <label>
+          Website
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       {[
         { name: "name", label: "Full Name", type: "text", placeholder: "John Doe", required: true },
         { name: "email", label: "Email Address", type: "email", placeholder: "john@company.com", required: true },

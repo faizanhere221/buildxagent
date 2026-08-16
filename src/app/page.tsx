@@ -84,7 +84,7 @@ const after = [
 const faqs = [
   { q: "What is the AI Sales Engine?", a: "A fully managed AI outbound system. We find 1,000 targeted prospects per month, generate a personalized interactive demo for each one, write AI-personalized emails, send automated follow-ups, optimize campaigns weekly, and deliver transparent performance reports. Your team focuses on closing deals." },
   { q: "How is this different from a cold email agency?", a: "Cold email agencies send text emails with basic personalization (first name, company name). We generate a personalized interactive demo for every prospect. Before the first email arrives, each prospect has a working product experience built for their company. The demo link in the email drives 30-35% engagement rates compared to 1-3% for generic cold email." },
-  { q: "What does the $300 setup fee cover?", a: "Prospect research configuration (defining your ideal customer profile and data sources), demo template design (building the interactive demo for your offer), email infrastructure warmup (setting up sending domains and warming them for deliverability), and CRM integration (connecting your pipeline so leads flow automatically)." },
+  { q: "What does the $400 setup fee cover?", a: "Prospect research configuration (defining your ideal customer profile and data sources), demo template design (building the interactive demo for your offer), email infrastructure warmup (setting up sending domains and warming them for deliverability), and CRM integration (connecting your pipeline so leads flow automatically)." },
   { q: "How quickly do results start?", a: "Your campaign launches in week 3 after setup. Most clients see their first qualified replies within 5-7 days of launch. A predictable pipeline builds over 30-60 days as follow-up sequences run and demo engagement compounds." },
   { q: "What industries do you work with?", a: "Marketing agencies, web development agencies, AI automation agencies, SaaS companies, B2B service businesses, consultancies, SEO agencies, and GoHighLevel agencies. Any business depending on outbound to find clients benefits from the system." },
   { q: "Do I need any technical knowledge?", a: "No. We build, manage, and optimize the entire system. You receive weekly reports and qualified replies in your inbox. The technical infrastructure runs behind the scenes." },
@@ -326,7 +326,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="glass-card rounded-xl p-6 lg:p-8 space-y-stack-md">
               <p className="text-tag-label font-mono text-outline uppercase tracking-widest">One-Time Setup</p>
-              <p className="text-h1-mobile lg:text-h1-desktop text-on-surface">$300</p>
+              <p className="text-h1-mobile lg:text-h1-desktop text-on-surface">$400</p>
               <p className="text-body-sm text-on-surface-variant">Covers prospect research configuration, demo template design, email infrastructure warmup, and CRM integration.</p>
             </div>
             <div className="glass-card glow-accent border-secondary/20 rounded-xl p-6 lg:p-8 space-y-stack-md relative overflow-hidden">
