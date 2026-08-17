@@ -1,7 +1,15 @@
+"use client";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function ProposalLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  // /proposal/salman ships its own self-contained header, so skip the shared one.
+  if (pathname === "/proposal/salman") {
+    return <>{children}</>;
+  }
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 lg:px-10 py-4 bg-surface/95 glass-nav border-b border-outline-variant/10">

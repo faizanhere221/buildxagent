@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BuildXAgent — Pricing for Caito360</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0A1628;
+  --navy-2:  #0F1E38;
+  --navy-3:  #162844;
+  --border:  #1D3459;
+  --cyan:    #00C2FF;
+  --cyan-dim:#00C2FF14;
+  --green:   #10B981;
+  --amber:   #F59E0B;
+  --white:   #F8FAFC;
+  --muted:   #8BA3BF;
+  --purple:  #8B5CF6;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  border-bottom: 1px solid var(--border);
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--navy);
+  z-index: 100;
+}
+.logo { font-size: 16px; font-weight: 800; color: var(--white); letter-spacing: -.01em; }
+.logo span { color: var(--cyan); }
+.header-for {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.header-for strong { color: var(--white); }
+.header-cta {
+  background: var(--cyan);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: filter .15s;
+}
+.header-cta:hover { filter: brightness(1.1); }
+
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 72px 48px 56px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--cyan), #0065A8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+/* ── TOGGLE ── */
+.billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px;
+  margin-bottom: 52px;
+}
+.toggle-btn {
+  padding: 8px 20px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all .2s;
+  background: transparent;
+  color: var(--muted);
+}
+.toggle-btn.active {
+  background: var(--cyan);
+  color: var(--navy);
+}
+
+/* ── CONTEXT BAR ── */
+.context-bar {
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--amber);
+  border-radius: 12px;
+  padding: 18px 28px;
+  max-width: 960px;
+  margin: 0 auto 48px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.context-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.context-title { font-size: 13px; font-weight: 700; color: var(--amber); margin-bottom: 4px; }
+.context-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.context-text strong { color: var(--white); }
+
+/* ── PRICING GRID ── */
+.pricing-section { max-width: 1100px; margin: 0 auto; padding: 0 32px 80px; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.plan-card {
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  transition: border-color .2s, transform .2s;
+}
+.plan-card:hover { border-color: var(--cyan); transform: translateY(-2px); }
+
+.plan-card.featured {
+  border-color: var(--cyan);
+  background: linear-gradient(180deg, #0d1d3a 0%, var(--navy-2) 100%);
+  box-shadow: 0 0 40px rgba(0,194,255,.12);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cyan);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.plan-badge.salman {
+  background: var(--amber);
+  color: var(--navy);
+}
+
+.plan-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.plan-price {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.plan-price span { font-size: 16px; font-weight: 400; color: var(--muted); }
+
+.plan-volume {
+  font-size: 12px;
+  color: var(--cyan);
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 24px;
+  flex: 1;
+}
+.plan-features li {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  line-height: 1.4;
+}
+.plan-features li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 700;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.plan-features li.highlight {
+  color: var(--white);
+  font-weight: 600;
+}
+.plan-features li.highlight::before { color: var(--cyan); }
+
+.plan-cta {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .15s;
+  cursor: pointer;
+  border: none;
+}
+.plan-cta.primary { background: var(--cyan); color: var(--navy); }
+.plan-cta.primary:hover { filter: brightness(1.1); }
+.plan-cta.ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.plan-cta.ghost:hover { color: var(--white); border-color: var(--muted); }
+
+/* ── SETUP FEE BANNER ── */
+.setup-banner {
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.setup-label { font-size: 13px; color: var(--muted); }
+.setup-label strong { color: var(--white); font-size: 15px; }
+.setup-amount {
+  font-size: 26px;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--white);
+}
+.setup-amount small { font-size: 13px; color: var(--muted); font-weight: 400; font-family: 'Inter', sans-serif; }
+.setup-includes {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.setup-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.setup-item::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+/* ── SALMAN SECTION ── */
+.salman-section {
+  max-width: 960px;
+  margin: 0 auto 64px;
+  padding: 0 32px;
+}
+.salman-card {
+  background: linear-gradient(135deg, #0d1d3a 0%, var(--navy-2) 100%);
+  border: 1px solid var(--amber);
+  border-radius: 16px;
+  padding: 32px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.salman-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(245,158,11,.1) 0%, transparent 70%);
+}
+.salman-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--amber);
+  margin-bottom: 12px;
+}
+.salman-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+.salman-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; max-width: 580px; }
+.salman-phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.phase-card {
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.phase-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+.phase-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.phase-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.salman-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 20px;
+}
+.salman-total-label { font-size: 13px; color: var(--muted); }
+.salman-total-amount { font-size: 22px; font-weight: 900; font-family: 'JetBrains Mono', monospace; color: var(--amber); }
+.salman-total-note { font-size: 11px; color: var(--muted); }
+
+/* ── WHAT'S INCLUDED ── */
+.included-section {
+  max-width: 960px;
+  margin: 0 auto 64px;
+  padding: 0 32px;
+}
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.section-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.included-card {
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.included-icon { font-size: 24px; margin-bottom: 12px; }
+.included-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.included-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ── FAQ ── */
+.faq-section {
+  max-width: 700px;
+  margin: 0 auto 72px;
+  padding: 0 32px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+}
+.faq-q {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  user-select: none;
+}
+.faq-q .arrow { color: var(--cyan); font-size: 16px; transition: transform .2s; flex-shrink: 0; }
+.faq-q.open .arrow { transform: rotate(180deg); }
+.faq-a {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease, padding .3s;
+}
+.faq-a.open { max-height: 200px; padding-top: 12px; }
+
+/* ── CTA FOOTER ── */
+.cta-footer {
+  background: var(--navy-2);
+  border-top: 1px solid var(--border);
+  padding: 56px 48px;
+  text-align: center;
+}
+.cta-footer h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+.cta-footer p { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+.cta-footer-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.btn-cta-main {
+  background: var(--cyan);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 9px;
+  text-decoration: none;
+  transition: filter .15s;
+}
+.btn-cta-main:hover { filter: brightness(1.1); }
+.btn-cta-ghost {
+  background: transparent;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color .15s;
+}
+.btn-cta-ghost:hover { border-color: var(--muted); }
+
+.footer-sig {
+  margin-top: 32px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-sig strong { color: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">Build<span>X</span>Agent</div>
+  <div class="header-for">
+    📄 Prepared for <strong>Salman Ansari · Caito360</strong>
+  </div>
+  <a href="https://calendly.com/islam9039438/30min" class="header-cta" target="_blank">Book a Call</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">💰 Investment</div>
+  <h1>Simple.<br/><em>Transparent.</em></h1>
+  <p>Month-to-month. You own everything. Cancel anytime.</p>
+</section>
+
+<!-- CONTEXT BAR -->
+<div class="context-bar" style="max-width:1060px; margin: 0 auto 48px; padding: 18px 32px;">
+  <div class="context-icon">🎯</div>
+  <div>
+    <div class="context-title">Salman — based on your goal of 100 clients in 6 months</div>
+    <div class="context-text">
+      We recommend a <strong>parallel niche testing approach</strong> — running ~1,000 emails per vertical simultaneously in month 1 across your target niches (HVAC, Beauty, MedSpa, Clinics, etc.) to identify which converts fastest. That's a <strong>Scale or Growth Pro campaign</strong>, not a single Launch. The plan below breaks down exactly how this works financially.
+    </div>
+  </div>
+</div>
+
+<!-- PRICING GRID -->
+<section class="pricing-section">
+
+
+
+  <div class="pricing-grid">
+
+    <!-- LAUNCH -->
+    <div class="plan-card">
+      <div class="plan-name">Launch</div>
+      <div class="plan-price">$500<span>/mo</span></div>
+      <div class="plan-volume">Up to 1,000 emails/month</div>
+      <ul class="plan-features">
+        <li>AI lead research</li>
+        <li>Personalized demo per prospect</li>
+        <li>AI-written outreach emails</li>
+        <li>3 follow-ups over 21 days</li>
+        <li>CRM integration</li>
+        <li>Weekly performance report</li>
+        <li>1 niche / city</li>
+      </ul>
+      <button class="plan-cta ghost">Start with Launch</button>
+    </div>
+
+    <!-- GROWTH -->
+    <div class="plan-card featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Growth</div>
+      <div class="plan-price">$900<span>/mo</span></div>
+      <div class="plan-volume">Up to 2,500 emails/month</div>
+      <ul class="plan-features">
+        <li class="highlight">Everything in Launch</li>
+        <li>A/B email testing</li>
+        <li>Multiple ICP targeting</li>
+        <li>Priority optimization</li>
+        <li>2 niches simultaneously</li>
+        <li>Bi-weekly strategy call</li>
+        <li>Dedicated Slack channel</li>
+      </ul>
+      <button class="plan-cta primary">Start with Growth</button>
+    </div>
+
+    <!-- SCALE -->
+    <div class="plan-card">
+      <div class="plan-name">Scale</div>
+      <div class="plan-price">$1,500<span>/mo</span></div>
+      <div class="plan-volume">Up to 5,000 emails/month</div>
+      <ul class="plan-features">
+        <li class="highlight">Everything in Growth</li>
+        <li>Multi-domain campaigns</li>
+        <li>Advanced deliverability</li>
+        <li>Weekly optimization calls</li>
+        <li>Up to 3 niches</li>
+        <li>Apollo API integration</li>
+        <li>Custom demo variants</li>
+      </ul>
+      <button class="plan-cta ghost">Start with Scale</button>
+    </div>
+
+    <!-- GROWTH PRO -->
+    <div class="plan-card">
+      <div class="plan-name">Growth Pro</div>
+      <div class="plan-price">$2,500<span>/mo</span></div>
+      <div class="plan-volume">Up to 7,500 emails/month</div>
+      <ul class="plan-features">
+        <li class="highlight">Everything in Scale</li>
+        <li>Advanced deliverability</li>
+        <li>Dedicated account manager</li>
+        <li>Dedicated support</li>
+        <li>Up to 5 niches simultaneously</li>
+        <li>Priority support</li>
+        <li>Custom reporting dashboard</li>
+      </ul>
+      <button class="plan-cta ghost">Start with Growth Pro</button>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="plan-card">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price">$3,500<span>/mo</span></div>
+      <div class="plan-volume">10,000+ emails/month</div>
+      <ul class="plan-features">
+        <li class="highlight">Everything in Growth Pro</li>
+        <li>Unlimited niches</li>
+        <li>Full Apollo API automation</li>
+        <li>White-glove onboarding</li>
+        <li>Dedicated account manager</li>
+        <li>Custom AI agent build</li>
+        <li>SLA guarantee</li>
+      </ul>
+      <button class="plan-cta ghost">Talk to us</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- SALMAN'S RECOMMENDED PLAN -->
+<section class="salman-section">
+  <div class="salman-card">
+    <div class="salman-eyebrow">⚡ Recommended for Caito360 · 100 Clients in 6 Months</div>
+    <div class="salman-title">The Parallel Niche Testing Plan</div>
+    <div class="salman-sub">Based on your goal of 100 clients across multiple verticals, here's the exact phased approach we discussed — starting lean with testing, scaling fast once we know what converts.</div>
+
+    <div class="salman-phases">
+      <div class="phase-card">
+        <div class="phase-label">Month 1 — Test</div>
+        <div class="phase-title">~1,000 emails per niche</div>
+        <div class="phase-desc">Send simultaneously across your target niches (HVAC, Beauty, MedSpa, Clinics, etc.). Each niche gets its own personalized demo variant. Identify top converting verticals. Email warm-up included.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Months 2–3 — Scale</div>
+        <div class="phase-title">Double down on winners</div>
+        <div class="phase-desc">Shift 70% of volume to top-converting niches. Refine messaging and demos based on month 1 data. Target 30–50 new clients across the best-performing verticals.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-label">Months 4–6 — Full Throttle</div>
+        <div class="phase-title">All winning verticals optimized</div>
+        <div class="phase-desc">Every confirmed vertical running at full volume. Messaging dialled in. Aiming for 50–100 total clients across all your ProfitOS products.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--navy-3);border:1px solid var(--border);border-radius:10px;padding:14px 20px;margin-bottom:14px;">
+      <div style="font-size:11px;color:var(--amber);font-weight:700;margin-bottom:6px;">📌 Note on multi-niche demos</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">Each niche you target requires its own personalized demo template (e.g. HomeServicesOS for HVAC, ClinicOS for medical, BeautyOS for salons). Building each demo is included in the plan — the more niches you run simultaneously, the more demo variants we build and maintain for you.</div>
+    </div>
+
+    <div class="salman-total">
+      <div>
+        <div class="salman-total-label">Recommended starting tier for parallel niche testing</div>
+        <div class="salman-total-note">$2,500/mo · scales with results · month-to-month · no setup fee</div>
+      </div>
+      <div>
+        <div class="salman-total-amount">Growth Pro · $2,500/mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="included-section">
+  <div class="section-eyebrow">Every Plan Includes</div>
+  <div class="section-title">Built to run itself.</div>
+  <div class="section-sub">Everything we deliver — no retainers for extras, no surprise charges.</div>
+
+  <div class="included-grid">
+    <div class="included-card">
+      <div class="included-icon">🎯</div>
+      <div class="included-title">AI Lead Research</div>
+      <div class="included-desc">Targeted decision-makers scraped from Apollo filtered by size, location, reviews, and activity. You get quality, not junk lists.</div>
+    </div>
+    <div class="included-card">
+      <div class="included-icon">🖥️</div>
+      <div class="included-title">Personalized Demo Per Prospect</div>
+      <div class="included-desc">Every prospect gets a live URL with their actual business name inside your product. Built via Vercel + Claude API. No two demos are identical.</div>
+    </div>
+    <div class="included-card">
+      <div class="included-icon">✉️</div>
+      <div class="included-title">AI-Written Outreach</div>
+      <div class="included-desc">Each email references the prospect's specific business, location, and pain point. Not templates. Not merge tags. Written by AI for each company.</div>
+    </div>
+    <div class="included-card">
+      <div class="included-icon">🔄</div>
+      <div class="included-title">3 Automated Follow-Ups</div>
+      <div class="included-desc">If they don't reply, we follow up 3 times over 21 days with progressively different angles. Most deals close on follow-up 2 or 3.</div>
+    </div>
+    <div class="included-card">
+      <div class="included-icon">📊</div>
+      <div class="included-title">Weekly Performance Reports</div>
+      <div class="included-desc">Open rates, click rates, demo engagement, reply rates, and what we're changing next week. Full transparency, every Monday.</div>
+    </div>
+    <div class="included-card">
+      <div class="included-icon">🔗</div>
+      <div class="included-title">GoHighLevel CRM Sync</div>
+      <div class="included-desc">Qualified replies land directly in your GHL pipeline. HL Pro Tools takes it from there. Zero gap between acquisition and fulfillment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-eyebrow">FAQ</div>
+  <div class="section-title" style="font-size:22px; margin-bottom:24px;">Common questions</div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Who owns the tools and data? <span class="arrow">▾</span></div>
+    <div class="faq-a">You do. All tools, accounts, and data are set up under your name from day one. We operate them on your behalf. If you ever part ways with us, everything stays with you — leads, domains, accounts, all of it.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What are the software costs on top of this? <span class="arrow">▾</span></div>
+    <div class="faq-a">There are two categories of additional costs, all billed directly to you and all yours to own:
+
+<strong style="color:var(--white);">Monthly tools:</strong> Lead sourcing software ($59/mo) + email sending infrastructure ($39/mo) + mailboxes (~$6/mailbox/mo). For scale sending you need multiple mailboxes — each mailbox can send up to 50 emails/day once warmed up (starts at 10/day). So 1,000 emails/month needs ~2–3 mailboxes; 5,000+ needs 8–10. Typically $120–180/mo total.
+
+<strong style="color:var(--white);">One-time setup:</strong> Sending domains (~$12–15 each). You never send cold email from your main domain — we use dedicated outreach domains to protect your brand. Typically $50–100 one-time for a full domain set.
+
+We handle all setup and configuration. You just approve the purchases.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How long before we see results? <span class="arrow">▾</span></div>
+    <div class="faq-a">Email warm-up runs in week 1. Full campaign launches week 2. First replies typically arrive 5–10 days after launch. Based on your 100-client goal, we plan for month 1 as testing, months 2–6 as aggressive scaling.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Can we run multiple niches at once? <span class="arrow">▾</span></div>
+    <div class="faq-a">Yes — higher tiers support multiple simultaneous verticals. We recommend starting with parallel testing at ~1,000 emails per niche in month 1, then doubling down on the top converters from month 2 onwards.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How is this different from a regular cold email agency? <span class="arrow">▾</span></div>
+    <div class="faq-a">Everyone else sends emails with a first-name merge tag. We send a working demo of your SaaS product with the prospect's actual business name inside it. That's why we get 3x more engagement than generic cold email. The demo is the differentiator.</div>
+  </div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="cta-footer">
+  <h2>Ready to build Caito360's pipeline?</h2>
+  <p>Your first HomeServicesOS client could already be searching for what you offer.</p>
+  <div class="cta-footer-btns">
+    <a href="https://calendly.com/islam9039438/30min" class="btn-cta-main" target="_blank">Book the Next Call</a>
+  </div>
+  <div class="footer-sig">
+    <strong>Faizan Islam</strong> · Founder, BuildXAgent · hello@buildxagent.com · buildxagent.com
+  </div>
+</section>
+
+<script>
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(a => { a.classList.remove('open'); a.previousElementSibling.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); el.classList.add('open'); }
+}
+</script>
+</body>
+</html>
