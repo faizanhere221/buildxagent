@@ -25,7 +25,7 @@ export default function ContactForm() {
   if (status === "sent") {
     return (
       <div className="glass-card rounded-xl p-6 glow-subtle text-center space-y-4">
-        <span className="material-symbols-outlined text-secondary text-5xl">check_circle</span>
+        <span className="block text-secondary text-5xl font-bold leading-none" aria-hidden="true">✓</span>
         <h3 className="text-h3-mobile text-on-surface font-semibold">Message Sent</h3>
         <p className="text-body-sm text-on-surface-variant">We will get back to you within 24 hours.</p>
       </div>

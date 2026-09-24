@@ -16,10 +16,11 @@ export default function FAQ({ items }: { items: FAQItem[] }) {
           >
             <span>{item.q}</span>
             <span
-              className="material-symbols-outlined text-outline group-hover:text-secondary transition-all"
-              style={{ transform: openIndex === i ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }}
+              aria-hidden="true"
+              className="text-2xl leading-none font-light text-outline group-hover:text-secondary transition-all duration-300 flex-shrink-0 ml-4"
+              style={{ transform: openIndex === i ? "rotate(180deg)" : "rotate(0deg)" }}
             >
-              expand_more
+              {openIndex === i ? "−" : "+"}
             </span>
           </button>
           <div

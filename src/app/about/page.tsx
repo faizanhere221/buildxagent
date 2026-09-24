@@ -15,8 +15,7 @@ export default function AboutPage() {
         <Tag>ABOUT US</Tag>
         <h1 className="text-h1-mobile lg:text-h1-desktop text-on-background mt-stack-md leading-tight max-w-3xl">We Build AI Prospecting Machines for Agency Owners</h1>
         <div className="flex items-center gap-2 text-on-surface-variant font-medium mt-stack-lg">
-          <span className="material-symbols-outlined text-secondary">location_on</span>
-          <span className="text-body-sm">Based in Pakistan. Operating Globally.</span>
+                    <span className="text-body-sm">Based in Pakistan. Operating Globally.</span>
         </div>
       </section>
 
@@ -41,11 +40,10 @@ export default function AboutPage() {
 
       <section className="px-6 lg:px-10 py-section-mobile lg:py-section-desktop">
         <div className="max-w-container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-stack-lg">
-          {[{icon:"bolt",color:"text-secondary",title:"Ship Fast",desc:"Complex AI workflows deployed in 2-3 weeks, not months. Speed is our competitive edge."},{icon:"analytics",color:"text-primary",title:"Results Over Features",desc:"We don't build cool tech for fun. We build machines that book meetings and generate revenue."},{icon:"shield",color:"text-tertiary",title:"Full Ownership",desc:"You own everything we build. Code, data, integrations. No lock-in. No recurring platform fees."}].map(v=>(
+          {[{title:"Ship Fast",desc:"Complex AI workflows deployed in 2-3 weeks, not months. Speed is our competitive edge."},{title:"Results Over Features",desc:"We don't build cool tech for fun. We build machines that book meetings and generate revenue."},{title:"Full Ownership",desc:"You own everything we build. Code, data, integrations. No lock-in. No recurring platform fees."}].map(v=>(
             <Reveal key={v.title}>
               <div className="glass-card glass-card-hover p-stack-lg rounded-xl flex flex-col gap-stack-sm glow-subtle h-full">
-                <span className={`material-symbols-outlined ${v.color} text-4xl mb-2`}>{v.icon}</span>
-                <h3 className="text-h3-mobile lg:text-h3-desktop text-on-surface">{v.title}</h3>
+                                <h3 className="text-h3-mobile lg:text-h3-desktop text-on-surface">{v.title}</h3>
                 <p className="text-body-sm text-on-surface-variant">{v.desc}</p>
               </div>
             </Reveal>

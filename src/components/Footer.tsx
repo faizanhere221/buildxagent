@@ -4,7 +4,6 @@ export default function Footer() {
   return (
     <footer className="w-full py-stack-xl px-6 flex flex-col items-center text-center space-y-stack-lg bg-surface border-t border-outline-variant/10">
       <Link href="/" className="flex items-center gap-2">
-        <span className="material-symbols-outlined text-primary text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>token</span>
         <span className="text-h3-mobile font-extrabold text-on-surface">BuildXAgent</span>
       </Link>
 

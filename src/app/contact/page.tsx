@@ -33,27 +33,18 @@ export default function ContactPage() {
           </div>
           <div className="lg:flex-1 space-y-stack-md">
             <div className="glass-card rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-stack-md">
-                <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center"><span className="material-symbols-outlined text-secondary">calendar_today</span></div>
-                <h3 className="text-h3-mobile text-on-surface font-semibold">Book a Strategy Call</h3>
-              </div>
+              <h3 className="mb-stack-md text-h3-mobile text-on-surface font-semibold">Book a Strategy Call</h3>
               <p className="text-body-sm text-on-surface-variant mb-stack-lg">30 minutes. Free. No pitch. We review your prospecting process and show you how AI demos work.</p>
               <a href="https://calendly.com/islam9039438/30min" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all">
-                Book on Calendly <span className="material-symbols-outlined">arrow_forward</span>
+                Book on Calendly →
               </a>
             </div>
             <div className="glass-card rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-stack-md">
-                <div className="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center"><span className="material-symbols-outlined text-tertiary">mail</span></div>
-                <h3 className="text-h3-mobile text-on-surface font-semibold">Email Us</h3>
-              </div>
+              <h3 className="mb-stack-md text-h3-mobile text-on-surface font-semibold">Email Us</h3>
               <a className="text-secondary font-mono text-body-sm hover:underline" href="mailto:hello@buildxagent.com">hello@buildxagent.com</a>
             </div>
             <div className="glass-card rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-stack-md">
-                <div className="w-10 h-10 rounded-full bg-on-surface-variant/10 flex items-center justify-center"><span className="material-symbols-outlined text-on-surface-variant">public</span></div>
-                <h3 className="text-h3-mobile text-on-surface font-semibold">Serving</h3>
-              </div>
+              <h3 className="mb-stack-md text-h3-mobile text-on-surface font-semibold">Serving</h3>
               <div className="flex flex-wrap gap-2">
                 {["USA","UK","AUSTRALIA","UAE","JORDAN"].map(c=>(<span key={c} className="px-3 py-1 bg-surface-container-high rounded-full text-tag-label font-mono text-on-surface">{c}</span>))}
               </div>

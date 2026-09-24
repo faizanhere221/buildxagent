@@ -91,3 +91,55 @@
 .prose-dark th { background: #1b1f2b; color: #ffffff; font-weight: 700; white-space: nowrap; }
 .prose-dark td { color: #e2e8f0; }
 .prose-dark tr:last-child td { border-bottom: none; }
+
+/* Splash screen: letters type in 0-1.5s, line draws 1.5-2.5s, fade 2.5-3s */
+.splash {
+  animation: splash-fade 500ms ease-out 2500ms forwards;
+}
+.splash-seen .splash { display: none; }
+.splash-letter {
+  opacity: 0;
+  animation: splash-type 1ms linear forwards;
+}
+.splash-line {
+  width: 0;
+  animation: splash-draw 1000ms ease-out 1500ms forwards;
+}
+@keyframes splash-type { to { opacity: 1; } }
+@keyframes splash-draw { to { width: 200px; } }
+@keyframes splash-fade { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .splash { display: none; }
+}
+
+/* ROI calculator range sliders */
+.roi-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #adc6ff 0%, #adc6ff var(--fill, 0%), #252a36 var(--fill, 0%), #252a36 100%);
+  cursor: pointer;
+  outline: none;
+}
+.roi-range:focus-visible { box-shadow: 0 0 0 3px rgba(173, 198, 255, 0.35); }
+.roi-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #adc6ff;
+  border: 3px solid #0e131e;
+  box-shadow: 0 0 0 1px #adc6ff;
+  transition: transform 150ms;
+}
+.roi-range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.roi-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #adc6ff;
+  border: 3px solid #0e131e;
+  box-shadow: 0 0 0 1px #adc6ff;
+}

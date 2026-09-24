@@ -18,7 +18,6 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 lg:px-10 py-4 bg-surface/95 glass-nav border-b border-outline-variant/10">
         <Link href="/" className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary text-h3-mobile" style={{ fontVariationSettings: "'FILL' 1" }}>token</span>
           <span className="text-h3-mobile font-extrabold text-on-surface">BuildXAgent</span>
         </Link>
 
@@ -47,11 +46,14 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="md:hidden text-on-surface-variant hover:text-secondary transition-colors active:scale-95"
+          className="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 text-on-surface-variant hover:text-secondary transition-colors active:scale-95"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
-          <span className="material-symbols-outlined">{open ? "close" : "menu"}</span>
+          <span className={`block h-0.5 w-6 bg-current rounded-full transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-current rounded-full transition-opacity duration-300 ${open ? "opacity-0" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-current rounded-full transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`} />
         </button>
       </header>
 

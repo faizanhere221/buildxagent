@@ -3,6 +3,7 @@ import CTASection from "@/components/CTASection";
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
+import ROICalculator from "@/components/ROICalculator";
 
 const CALENDLY = "https://calendly.com/islam9039438/30min";
 
@@ -16,32 +17,26 @@ const painPoints = [
 
 const offerCards = [
   {
-    icon: "search",
     title: "1,000 Targeted Prospects",
     desc: "We identify businesses matching your ideal customer profile using premium B2B data. Not random lists. Real companies likely to buy.",
   },
   {
-    icon: "psychology",
     title: "AI Company Research",
     desc: "AI studies each company's website, services, and online presence before writing a single word. Every outreach message reflects real knowledge.",
   },
   {
-    icon: "devices",
     title: "Personalized Interactive Demo",
     desc: "Every prospect gets a working product demo with their company name on the screen. They experience your product before you ask for a meeting.",
   },
   {
-    icon: "edit_note",
     title: "AI-Written Emails",
     desc: "Every email is written specifically for each company. References their business. Links to their personalized demo. Under 50 words.",
   },
   {
-    icon: "autorenew",
     title: "Automated Follow-Ups",
     desc: "3 strategic follow-ups over 14 days. Most replies happen after the second or third touch. We never leave opportunities behind.",
   },
   {
-    icon: "bar_chart",
     title: "Weekly Optimization & Reporting",
     desc: "Open rates, reply rates, demo engagement analyzed weekly. Campaigns improved continuously. You always know what's working.",
   },
@@ -51,10 +46,10 @@ const everyoneElse = ["Company", "Generic Email", "Ignored", "Lost"];
 const buildXAgent = ["Company", "AI Research", "Personalized Demo", "Personalized Email", "Follow-Ups", "Qualified Reply"];
 
 const howItWorks = [
-  { icon: "call", title: "Week 1: Discovery", desc: "We learn your business, ideal customers, and offer. Map the outbound strategy and define targeting." },
-  { icon: "code", title: "Week 2: Build", desc: "Prospect sourcing, demo generation, email infrastructure, CRM integration, follow-up sequences. Everything built and tested." },
-  { icon: "rocket_launch", title: "Week 3: Launch", desc: "Campaign goes live. AI finds prospects, generates demos, sends outreach. Qualified replies start arriving." },
-  { icon: "trending_up", title: "Every Week: Optimize", desc: "Better messaging. Better targeting. Better conversion. Campaigns improve based on real data every week." },
+  { title: "Week 1: Discovery", desc: "We learn your business, ideal customers, and offer. Map the outbound strategy and define targeting." },
+  { title: "Week 2: Build", desc: "Prospect sourcing, demo generation, email infrastructure, CRM integration, follow-up sequences. Everything built and tested." },
+  { title: "Week 3: Launch", desc: "Campaign goes live. AI finds prospects, generates demos, sends outreach. Qualified replies start arriving." },
+  { title: "Every Week: Optimize", desc: "Better messaging. Better targeting. Better conversion. Campaigns improve based on real data every week." },
 ];
 
 const caseStudyStats = [
@@ -66,14 +61,14 @@ const caseStudyStats = [
 ];
 
 const audiences = [
-  { icon: "campaign", title: "Marketing Agencies" },
-  { icon: "code", title: "Web Dev Agencies" },
-  { icon: "smart_toy", title: "AI Automation Agencies" },
-  { icon: "cloud", title: "SaaS Companies" },
-  { icon: "business_center", title: "B2B Service Businesses" },
-  { icon: "groups", title: "Consultancies" },
-  { icon: "search", title: "SEO Agencies" },
-  { icon: "hub", title: "GHL Agencies" },
+  { title: "Marketing Agencies" },
+  { title: "Web Dev Agencies" },
+  { title: "AI Automation Agencies" },
+  { title: "SaaS Companies" },
+  { title: "B2B Service Businesses" },
+  { title: "Consultancies" },
+  { title: "SEO Agencies" },
+  { title: "GHL Agencies" },
 ];
 
 const faqs = [
@@ -100,7 +95,7 @@ function Flow({ steps, tone }: { steps: string[]; tone: "error" | "secondary" })
             {step}
           </span>
           {i < steps.length - 1 && (
-            <span className={`material-symbols-outlined text-sm pl-4 ${tone === "error" ? "text-error" : "text-secondary"}`}>arrow_downward</span>
+            <span aria-hidden="true" className="pl-5 text-on-surface-variant leading-none">↓</span>
           )}
         </div>
       ))}
@@ -145,7 +140,7 @@ export default function HomePage() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {painPoints.map((p) => (
               <li key={p} className="flex items-center gap-3 p-4 bg-surface-container-low border border-outline-variant/10 rounded-lg text-body-sm text-on-surface-variant">
-                <span className="material-symbols-outlined text-error flex-shrink-0">close</span>
+                <span className="text-error font-bold text-lg leading-none flex-shrink-0" aria-hidden="true">×</span>
                 {p}
               </li>
             ))}
@@ -167,9 +162,6 @@ export default function HomePage() {
             {offerCards.map((c) => (
               <Reveal key={c.title}>
                 <div className="p-6 lg:p-8 bg-surface-container-lowest border border-outline-variant/20 rounded-xl hover:border-primary/40 transition-all duration-300 h-full flex flex-col">
-                  <div className="p-2 bg-primary/10 rounded-lg w-fit mb-stack-md">
-                    <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>{c.icon}</span>
-                  </div>
                   <h3 className="text-h3-mobile lg:text-h3-desktop text-on-surface mb-stack-sm">{c.title}</h3>
                   <p className="text-body-sm text-on-surface-variant">{c.desc}</p>
                 </div>
@@ -214,8 +206,8 @@ export default function HomePage() {
               <Reveal key={s.title}>
                 <div className="relative flex lg:flex-col items-start gap-6">
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center">
-                      <span className="material-symbols-outlined text-secondary">{s.icon}</span>
+                    <div className="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center">
+                      <span className="font-mono font-bold text-secondary">{String(i + 1).padStart(2, "0")}</span>
                     </div>
                   </div>
                   <div className="space-y-2 pt-1">
@@ -232,6 +224,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <ROICalculator />
+
       {/* Case Study */}
       <section className="px-6 lg:px-10 py-section-mobile lg:py-section-desktop bg-surface overflow-hidden">
         <div className="max-w-container mx-auto">
@@ -242,8 +236,8 @@ export default function HomePage() {
                 <Tag color="tertiary">CLIENT RESULTS</Tag>
                 <div>
                   <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface">How a Melbourne Agency Built a Predictable Pipeline</h2>
-                  <p className="text-tag-label font-mono text-outline flex items-center gap-1 mt-1">
-                    <span className="material-symbols-outlined text-sm">location_on</span> Optimo Agency · Craig Kelly · Melbourne, Australia
+                  <p className="text-tag-label font-mono text-outline mt-1">
+                    Optimo Agency · Craig Kelly · Melbourne, Australia
                   </p>
                 </div>
                 <ul className="grid grid-cols-2 lg:grid-cols-5 gap-4 pt-2">
@@ -258,7 +252,7 @@ export default function HomePage() {
                   Craig Kelly runs Optimo Agency in Melbourne. He sold AI estimators to trade businesses. Manual prospecting limited him to 10-15 pitches per day. We built his AI Sales Engine. Now qualified conversations land in his inbox while his team focuses on closing.
                 </p>
                 <Link href="/case-studies" className="text-secondary font-bold flex items-center gap-1 w-fit hover:gap-2 transition-all pt-2">
-                  Read Full Case Study <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  Read Full Case Study <span aria-hidden="true">→</span>
                 </Link>
               </div>
             </div>
@@ -276,8 +270,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {audiences.map((a) => (
               <Reveal key={a.title}>
-                <div className="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-secondary/40 transition-all duration-300 h-full flex flex-col items-start gap-3">
-                  <span className="material-symbols-outlined text-secondary text-3xl">{a.icon}</span>
+                <div className="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-secondary/40 transition-all duration-300 h-full flex items-center">
                   <h3 className="text-body-sm font-bold text-on-surface">{a.title}</h3>
                 </div>
               </Reveal>
@@ -293,12 +286,7 @@ export default function HomePage() {
             <Tag>INVESTMENT</Tag>
             <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm">Simple Pricing. No Hidden Costs.</h2>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="glass-card rounded-xl p-6 lg:p-8 space-y-stack-md">
-              <p className="text-tag-label font-mono text-outline uppercase tracking-widest">One-Time Setup</p>
-              <p className="text-h1-mobile lg:text-h1-desktop text-on-surface">$400</p>
-              <p className="text-body-sm text-on-surface-variant">Prospect research setup, demo template design, email infrastructure warmup, CRM integration.</p>
-            </div>
+          <div className="max-w-xl mx-auto space-y-stack-md">
             <div className="glass-card glow-accent border-secondary/20 rounded-xl p-6 lg:p-8 space-y-stack-md relative overflow-hidden">
               <div className="flex items-center justify-between gap-4">
                 <p className="text-tag-label font-mono text-outline uppercase tracking-widest">Monthly</p>
@@ -307,10 +295,10 @@ export default function HomePage() {
               <p className="text-h1-mobile lg:text-h1-desktop text-on-surface">$500<span className="text-h3-mobile text-on-surface-variant">/month</span></p>
               <p className="text-body-sm text-on-surface-variant">Everything included: 1,000 prospects, AI research, personalized demos, AI emails, follow-ups, weekly optimization, weekly reporting.</p>
             </div>
+            <p className="text-body-sm text-on-surface-variant text-center">
+              Software costs billed separately. Usually under $100-150/month. You own all accounts and data.
+            </p>
           </div>
-          <p className="text-body-sm text-on-surface-variant max-w-2xl">
-            Software costs (Apollo, Smartlead) billed separately. Usually under $100-150/month. You own all accounts and data.
-          </p>
         </div>
       </section>
 

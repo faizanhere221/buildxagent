@@ -28,7 +28,6 @@ export default function CaseStudiesPage() {
               <div className="relative z-10 space-y-stack-md">
                 <div className="flex items-center justify-between">
                   <Tag color="tertiary">STAR CASE STUDY</Tag>
-                  <span className="material-symbols-outlined text-secondary" style={{fontVariationSettings:"'FILL' 1"}}>verified</span>
                 </div>
                 <div>
                   <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface">Optimo Agency</h2>
@@ -49,7 +48,7 @@ export default function CaseStudiesPage() {
                 <div className="pt-4 overflow-x-auto no-scrollbar flex gap-3 -mx-6 px-6 lg:mx-0 lg:px-0 lg:flex-wrap">
                   {["Scraper","Demo Gen","URL Deployment","CRM Sync","SMS Outreach"].map(t=>(
                     <div key={t} className="chip-glow px-4 py-2 rounded-lg whitespace-nowrap text-tag-label font-mono text-on-surface flex items-center gap-2">
-                      <span className="material-symbols-outlined text-[16px]">bolt</span>{t}
+                      {t}
                     </div>
                   ))}
                 </div>
@@ -67,7 +66,7 @@ export default function CaseStudiesPage() {
               <span className="text-tag-label font-mono text-primary-fixed-dim uppercase">LEGAL TECH</span>
               <h3 className="text-h3-mobile lg:text-h3-desktop text-on-surface">Synergy Legal</h3>
               <p className="text-body-sm text-on-surface-variant">Utah, USA — AI document processing dashboard. Claude Vision API reads scanned medical records, extracts expenses and ICD codes, generates demand letters.</p>
-              <div className="flex items-center gap-2 text-secondary"><span className="material-symbols-outlined">trending_up</span><span className="font-bold">85% faster processing</span></div>
+              <div className="flex items-center gap-2 text-secondary"><span className="font-bold">85% faster processing</span></div>
             </div>
           </Reveal>
           <Reveal>
@@ -78,7 +77,7 @@ export default function CaseStudiesPage() {
               <div className="space-y-3">
                 {["Gold Market Analyzer","Stock Advisor Pro","LinkedIn AI Content Agent"].map(p=>(
                   <div key={p} className="flex items-center gap-3 p-3 bg-surface-container-high rounded-lg border border-outline-variant/10">
-                    <span className="material-symbols-outlined text-tertiary text-sm">analytics</span><span className="text-body-sm font-medium">{p}</span>
+                    <span className="text-body-sm font-medium">{p}</span>
                   </div>
                 ))}
               </div>

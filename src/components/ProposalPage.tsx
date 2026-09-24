@@ -21,43 +21,37 @@ const outcomes = [
 ];
 
 const flowSteps = [
-  { icon: "group", title: "Ideal Customers" },
-  { icon: "search", title: "AI Prospect Research" },
-  { icon: "devices", title: "Personalized Interactive Demo", highlight: true },
-  { icon: "edit_note", title: "AI Personalized Email" },
-  { icon: "autorenew", title: "Automated Follow-Ups" },
-  { icon: "forum", title: "Qualified Replies" },
-  { icon: "event_available", title: "Booked Meetings" },
+  { title: "Ideal Customers" },
+  { title: "AI Prospect Research" },
+  { title: "Personalized Interactive Demo", highlight: true },
+  { title: "AI Personalized Email" },
+  { title: "Automated Follow-Ups" },
+  { title: "Qualified Replies" },
+  { title: "Booked Meetings" },
 ];
 
 const offerCards = [
   {
-    icon: "search",
     title: "AI Lead Research",
     desc: "1,000+ targeted decision-makers identified monthly from premium B2B data sources matching your ideal customer profile.",
   },
   {
-    icon: "devices",
     title: "Personalized Interactive Demo",
     desc: "Every prospect receives a unique product demo with their company name deployed to a live URL before the first email.",
   },
   {
-    icon: "edit_note",
     title: "AI Personalized Emails",
     desc: "Every email written specifically for each company. No templates. No copy-paste. Each references the prospect's business.",
   },
   {
-    icon: "autorenew",
     title: "Automated Follow-Ups",
     desc: "3 strategic touchpoints over 14 days. Most replies happen after the second or third follow-up.",
   },
   {
-    icon: "trending_up",
     title: "Weekly Optimization",
     desc: "Open rates, reply rates, click rates, demo engagement analyzed weekly. Campaigns improved continuously.",
   },
   {
-    icon: "bar_chart",
     title: "Transparent Reporting",
     desc: "Weekly report showing contacts made, replies received, demos viewed, and improvements planned.",
   },
@@ -154,9 +148,6 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
           </Reveal>
           <Reveal delay={100}>
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-h3-mobile" style={{ fontVariationSettings: "'FILL' 1" }}>
-                token
-              </span>
               <span className="text-h3-mobile font-extrabold text-on-surface">BuildXAgent</span>
             </div>
           </Reveal>
@@ -178,7 +169,7 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
           </Reveal>
         </div>
         <div className="absolute bottom-8 left-0 w-full flex justify-center z-10">
-          <span className="material-symbols-outlined text-outline animate-bounce">keyboard_arrow_down</span>
+          <span className="text-outline text-2xl leading-none animate-bounce" aria-hidden="true">↓</span>
         </div>
       </section>
 
@@ -198,7 +189,7 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
             {painPoints.map((p, i) => (
               <Reveal key={p} delay={i * 100}>
                 <li className="flex items-center gap-3 p-4 bg-surface-container-low border border-outline-variant/10 rounded-lg text-body-sm text-on-surface-variant h-full">
-                  <span className="material-symbols-outlined text-error flex-shrink-0">close</span>
+                  <span className="text-error font-bold text-lg leading-none flex-shrink-0" aria-hidden="true">×</span>
                   {p}
                 </li>
               </Reveal>
@@ -222,7 +213,7 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
             {outcomes.map((o, i) => (
               <Reveal key={o} delay={i * 100}>
                 <div className="flex items-center gap-3 p-4 glass-card rounded-lg text-body-sm text-on-surface h-full">
-                  <span className="material-symbols-outlined text-secondary flex-shrink-0">check_circle</span>
+                  <span className="text-secondary font-bold text-lg leading-none flex-shrink-0" aria-hidden="true">✓</span>
                   {o}
                 </div>
               </Reveal>
@@ -261,14 +252,6 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
                         This Is Our Differentiator
                       </span>
                     )}
-                    <div className={`p-2 rounded-lg w-fit flex-shrink-0 ${step.highlight ? "bg-secondary/10" : "bg-primary/10"}`}>
-                      <span
-                        className={`material-symbols-outlined ${step.highlight ? "text-secondary" : "text-primary"}`}
-                        style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        {step.icon}
-                      </span>
-                    </div>
                     <h3 className="text-h3-mobile text-on-surface">{step.title}</h3>
                   </div>
                 </Reveal>
@@ -327,11 +310,6 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
             {offerCards.map((c, i) => (
               <Reveal key={c.title} delay={(i % 3) * 100}>
                 <div className="p-6 lg:p-8 bg-surface-container-lowest border border-outline-variant/20 rounded-xl hover:border-primary/40 transition-all duration-300 h-full flex flex-col">
-                  <div className="p-2 bg-primary/10 rounded-lg w-fit mb-stack-md">
-                    <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>
-                      {c.icon}
-                    </span>
-                  </div>
                   <h3 className="text-h3-mobile lg:text-h3-desktop text-on-surface mb-stack-sm">{c.title}</h3>
                   <p className="text-body-sm text-on-surface-variant">{c.desc}</p>
                 </div>
@@ -409,7 +387,7 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-secondary/10 blur-[60px] rounded-full" />
               <div className="relative z-10 space-y-stack-md">
                 <p className="text-tag-label font-mono text-outline flex items-center gap-1">
-                  <span className="material-symbols-outlined text-sm">location_on</span> Optimo Agency · Craig Kelly · Melbourne, Australia
+                  Optimo Agency · Craig Kelly · Melbourne, Australia
                 </p>
                 <div className="space-y-2">
                   <p className="text-body-sm text-on-surface-variant"><span className="text-on-surface font-medium">Problem:</span> Manual prospecting. 10-15 pitches per day. Good close rate. Terrible volume.</p>
@@ -466,7 +444,7 @@ export default function ProposalPage({ clientName }: { clientName?: string }) {
                   <ul className="space-y-2 flex-1">
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-body-sm text-on-surface-variant">
-                        <span className="material-symbols-outlined text-secondary text-lg flex-shrink-0">check</span>
+                        <span className="text-secondary font-bold text-base leading-none flex-shrink-0" aria-hidden="true">✓</span>
                         <span>{f}</span>
                       </li>
                     ))}
