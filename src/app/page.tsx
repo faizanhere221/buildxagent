@@ -73,7 +73,7 @@ const audiences = [
 
 const faqs = [
   { q: "What is the AI Sales Engine?", a: "A fully managed AI outbound system. We find 1,000 targeted prospects per month, generate a personalized interactive demo for each one, write AI-personalized emails, send automated follow-ups, optimize campaigns weekly, and deliver transparent reports. You focus on closing." },
-  { q: "How is this different from regular cold email?", a: "Cold email agencies send text with merge tags. We generate a personalized interactive demo for every prospect. Before the email arrives, each prospect has a working product built for their company. Demo engagement rates run 30-35% compared to 1-3% for generic cold email." },
+  { q: "How is this different from regular cold email?", a: "Cold email agencies send text with merge tags. We generate a personalized interactive demo for every prospect. Before the email arrives, each prospect has a working product built for their company. They experience your product before the first conversation." },
   { q: "How quickly do results start?", a: "Campaign launches in week 3. First qualified replies arrive within 5-7 days of launch." },
   { q: "What industries do you work with?", a: "Marketing agencies, web dev agencies, AI automation agencies, SaaS companies, B2B service businesses, consultancies, SEO agencies, and GoHighLevel agencies. Any B2B business depending on outbound." },
   { q: "Do I need technical knowledge?", a: "No. We build, manage, and optimize the entire system. You receive weekly reports and qualified replies in your inbox." },
@@ -189,7 +189,7 @@ export default function HomePage() {
             </div>
           </div>
           <p className="text-body lg:text-lg text-on-surface max-w-2xl">
-            <span className="text-error font-bold">1-3%</span> reply rate vs <span className="text-secondary font-bold">30-35%</span> demo engagement. The difference is the demo.
+            Your prospects experience a working product before the first conversation. Every step moves them closer to a qualified meeting.
           </p>
         </div>
       </section>
