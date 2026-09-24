@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Case Studies — Real Results from Real Agencies",
-  description: "See how Optimo Agency generates 500+ AI demos per day with a 35% conversion rate. $300K+ revenue in 6 weeks.",
+  description: "See how Optimo Agency generates 500+ AI demos per day with a 35% conversion rate. 3x revenue growth in 6 weeks.",
 };
 
 export default function CaseStudiesPage() {
@@ -41,7 +41,7 @@ export default function CaseStudiesPage() {
                 </div>
                 <p className="text-body text-on-surface-variant">Craig sells AI estimators and CRM lead reactivation to trade businesses (decks, pergolas, outdoor renovations). He needed a way to reach hundreds of prospects per day with personalized demos instead of generic proposals.</p>
                 <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 pt-4 border-t border-outline-variant/10">
-                  {[{v:"500+",l:"DEMOS/DAY"},{v:"35%",l:"CONVERSION"},{v:"$300K+",l:"REVENUE"},{v:"90%",l:"LESS MANUAL"},{v:"3 Wks",l:"DELIVERY"}].map(s=>(
+                  {[{v:"500+",l:"DEMOS/DAY"},{v:"35%",l:"CONVERSION"},{v:"3x",l:"REVENUE GROWTH"},{v:"90%",l:"LESS MANUAL"},{v:"3 Wks",l:"DELIVERY"}].map(s=>(
                     <div key={s.l} className="flex flex-col"><span className="text-h3-mobile font-bold text-primary">{s.v}</span><span className="text-tag-label font-mono text-on-surface-variant">{s.l}</span></div>
                   ))}
                 </div>

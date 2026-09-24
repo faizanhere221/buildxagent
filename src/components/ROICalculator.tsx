@@ -25,7 +25,7 @@ type BasicKey = "prospects" | "clientValue" | "investment";
 const basicInputs: SliderDef<BasicKey>[] = [
   { key: "prospects", label: "Monthly Prospects", helper: "How many potential customers would you like to reach?", min: 500, max: 10000, step: 500, format: whole },
   { key: "clientValue", label: "Average Client Value", helper: "How much is one new client worth to your business?", min: 500, max: 25000, step: 500, format: money },
-  { key: "investment", label: "Monthly Outbound Investment", helper: "How much would you invest in generating new clients?", min: 300, max: 3000, step: 100, format: money },
+  { key: "investment", label: "Monthly Outbound Investment", helper: "How much would you invest in generating new clients?", min: 500, max: 3500, step: 100, format: money },
 ];
 
 // Conversion benchmarks most visitors don't know; set by the scenario tabs.

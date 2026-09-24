@@ -55,7 +55,7 @@ const howItWorks = [
 const caseStudyStats = [
   { value: "500+", label: "Personalized demos generated" },
   { value: "35%", label: "Demo engagement rate" },
-  { value: "$300K+", label: "Revenue generated" },
+  { value: "3x", label: "Revenue growth" },
   { value: "90%", label: "Less manual prospecting" },
   { value: "3 weeks", label: "To launch" },
 ];

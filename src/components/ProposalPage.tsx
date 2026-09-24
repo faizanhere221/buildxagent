@@ -74,7 +74,7 @@ const expectedOutcomes = [
 const caseStudyResults = [
   { v: "500+", l: "DEMOS" },
   { v: "35%", l: "ENGAGEMENT" },
-  { v: "$300K+", l: "REVENUE" },
+  { v: "3x", l: "REVENUE GROWTH" },
   { v: "90%", l: "LESS MANUAL WORK" },
   { v: "3 Wks", l: "DELIVERY" },
   { v: "Automated", l: "PIPELINE" },

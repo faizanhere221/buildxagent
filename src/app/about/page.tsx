@@ -26,7 +26,7 @@ export default function AboutPage() {
             <p className="text-body text-on-surface-variant leading-relaxed">Most agency owners spend 80% of their time chasing prospects instead of delivering excellence. We engineered a solution to flip that ratio. Our AI systems automate the entire outreach lifecycle: scraping prospects, generating personalized demos, syncing to CRM, and triggering follow-up sequences. You wake up to a pipeline full of warm leads who already saw your demo.</p>
           </div>
           <div className="grid grid-cols-2 gap-gutter mt-8 lg:mt-0 lg:flex-1">
-            {[{v:"2026",l:"FOUNDED JUNE"},{v:"4",l:"COUNTRIES"},{v:"$300K",l:"CLIENT REVENUE"},{v:"500+",l:"DAILY DEMOS"}].map(s=>(
+            {[{v:"2026",l:"FOUNDED JUNE"},{v:"4",l:"COUNTRIES"},{v:"3x",l:"CLIENT REVENUE GROWTH"},{v:"500+",l:"DAILY DEMOS"}].map(s=>(
               <Reveal key={s.l}>
                 <div className="glass-card glass-card-hover p-stack-md rounded-xl">
                   <div className="text-h2-mobile font-bold text-primary mb-1">{s.v}</div>

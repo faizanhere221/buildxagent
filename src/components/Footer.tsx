@@ -8,6 +8,7 @@ export default function Footer() {
       </Link>
 
       <nav className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-x-12 gap-y-4">
+        <Link href="/#roi-calculator" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">ROI Calculator</Link>
         <Link href="/#how-it-works" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">How It Works</Link>
         <Link href="/case-studies" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">Case Studies</Link>
         <Link href="/about" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">About</Link>
