@@ -4,92 +4,109 @@ import Reveal from "@/components/Reveal";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
 
+const CALENDLY = "https://calendly.com/islam9039438/30min";
+
 const painPoints = [
-  "Searching for prospects",
-  "Researching companies one by one",
-  "Writing cold emails all day",
-  "Following up manually",
-  "Updating spreadsheets and CRMs",
+  "Searching for prospects manually every day",
+  "Sending generic emails nobody replies to",
+  "Writing the same pitch 50 times a week",
+  "Forgetting to follow up and losing deals",
+  "Watching competitors close your ideal clients",
 ];
 
 const offerCards = [
   {
     icon: "search",
-    title: "AI Lead Research",
-    desc: "We identify businesses matching your ideal customer profile. Not purchased lead lists. Not random databases. Real businesses likely to buy from you.",
+    title: "1,000 Targeted Prospects",
+    desc: "We identify businesses matching your ideal customer profile using premium B2B data. Not random lists. Real companies likely to buy.",
+  },
+  {
+    icon: "psychology",
+    title: "AI Company Research",
+    desc: "AI studies each company's website, services, and online presence before writing a single word. Every outreach message reflects real knowledge.",
   },
   {
     icon: "devices",
     title: "Personalized Interactive Demo",
-    desc: "Before your first email is sent, we generate a personalized version of your product for every prospect. When they click the link, they see THEIR company inside the experience. Curiosity creates replies.",
+    desc: "Every prospect gets a working product demo with their company name on the screen. They experience your product before you ask for a meeting.",
   },
   {
     icon: "edit_note",
-    title: "AI Personalized Outreach",
-    desc: "Every email is written specifically for each business. Not templates. Not ChatGPT spam. Every message feels handcrafted because AI researches each prospect before writing.",
+    title: "AI-Written Emails",
+    desc: "Every email is written specifically for each company. References their business. Links to their personalized demo. Under 50 words.",
   },
   {
     icon: "autorenew",
     title: "Automated Follow-Ups",
-    desc: "Most agencies stop after one email. We don't. Our AI automatically follows up with every prospect. Most replies happen after the second or third touchpoint.",
-  },
-  {
-    icon: "trending_up",
-    title: "Weekly Optimization",
-    desc: "Every campaign is continuously improved. We monitor open rates, reply rates, click rates, and demo engagement. Then optimize your campaign every week.",
+    desc: "3 strategic follow-ups over 14 days. Most replies happen after the second or third touch. We never leave opportunities behind.",
   },
   {
     icon: "bar_chart",
-    title: "Transparent Reporting",
-    desc: "Every week you know how many businesses were contacted, who replied, who clicked, what worked, and what we improve next.",
+    title: "Weekly Optimization & Reporting",
+    desc: "Open rates, reply rates, demo engagement analyzed weekly. Campaigns improved continuously. You always know what's working.",
   },
 ];
 
+const everyoneElse = ["Company", "Generic Email", "Ignored", "Lost"];
+const buildXAgent = ["Company", "AI Research", "Personalized Demo", "Personalized Email", "Follow-Ups", "Qualified Reply"];
+
 const howItWorks = [
-  { label: "Week 1", title: "Discovery", desc: "We understand your business, ideal clients, and offer. We map the outbound strategy and define your ideal customer profile." },
-  { label: "Week 2", title: "Build", desc: "We build your complete AI Sales Engine. Lead sourcing. Personalized demo generation. Outreach automation. CRM integration. Follow-up sequences. Email infrastructure warmup." },
-  { label: "Week 3", title: "Launch", desc: "Your campaign goes live. AI starts finding prospects, generating personalized demos, sending outreach, and booking conversations." },
-  { label: "Every Week", title: "Optimize", desc: "Better messaging. Better targeting. Better conversion. We continuously improve based on real performance data." },
+  { icon: "call", title: "Week 1: Discovery", desc: "We learn your business, ideal customers, and offer. Map the outbound strategy and define targeting." },
+  { icon: "code", title: "Week 2: Build", desc: "Prospect sourcing, demo generation, email infrastructure, CRM integration, follow-up sequences. Everything built and tested." },
+  { icon: "rocket_launch", title: "Week 3: Launch", desc: "Campaign goes live. AI finds prospects, generates demos, sends outreach. Qualified replies start arriving." },
+  { icon: "trending_up", title: "Every Week: Optimize", desc: "Better messaging. Better targeting. Better conversion. Campaigns improve based on real data every week." },
 ];
 
-const caseStudyResults = [
-  "500+ personalized demos generated",
-  "35% demo engagement rate",
-  "$300K+ revenue generated",
-  "Automated outbound pipeline",
-  "90% less manual prospecting",
-  "Delivered in 3 weeks",
+const caseStudyStats = [
+  { value: "500+", label: "Personalized demos generated" },
+  { value: "35%", label: "Demo engagement rate" },
+  { value: "$300K+", label: "Revenue generated" },
+  { value: "90%", label: "Less manual prospecting" },
+  { value: "3 weeks", label: "To launch" },
 ];
 
 const audiences = [
   { icon: "campaign", title: "Marketing Agencies" },
-  { icon: "design_services", title: "Web Development Agencies" },
-  { icon: "hub", title: "AI Automation Agencies" },
-  { icon: "widgets", title: "SaaS Companies" },
-  { icon: "handshake", title: "B2B Service Businesses" },
+  { icon: "code", title: "Web Dev Agencies" },
+  { icon: "smart_toy", title: "AI Automation Agencies" },
+  { icon: "cloud", title: "SaaS Companies" },
+  { icon: "business_center", title: "B2B Service Businesses" },
   { icon: "groups", title: "Consultancies" },
-  { icon: "travel_explore", title: "SEO Agencies" },
-  { icon: "calculate", title: "GoHighLevel Agencies" },
-];
-
-const before = ["Spend hours prospecting", "Write emails all day", "Forget follow-ups", "No replies"];
-const after = [
-  "AI finds your ideal prospects",
-  "Personalized demo generated for every company",
-  "AI writes and sends outreach",
-  "Automatic follow-ups run for 14 days",
-  "Qualified conversations land in your inbox",
+  { icon: "search", title: "SEO Agencies" },
+  { icon: "hub", title: "GHL Agencies" },
 ];
 
 const faqs = [
-  { q: "What is the AI Sales Engine?", a: "A fully managed AI outbound system. We find 1,000 targeted prospects per month, generate a personalized interactive demo for each one, write AI-personalized emails, send automated follow-ups, optimize campaigns weekly, and deliver transparent performance reports. Your team focuses on closing deals." },
-  { q: "How is this different from a cold email agency?", a: "Cold email agencies send text emails with basic personalization (first name, company name). We generate a personalized interactive demo for every prospect. Before the first email arrives, each prospect has a working product experience built for their company. The demo link in the email drives 30-35% engagement rates compared to 1-3% for generic cold email." },
-  { q: "What does the $400 setup fee cover?", a: "Prospect research configuration (defining your ideal customer profile and data sources), demo template design (building the interactive demo for your offer), email infrastructure warmup (setting up sending domains and warming them for deliverability), and CRM integration (connecting your pipeline so leads flow automatically)." },
-  { q: "How quickly do results start?", a: "Your campaign launches in week 3 after setup. Most clients see their first qualified replies within 5-7 days of launch. A predictable pipeline builds over 30-60 days as follow-up sequences run and demo engagement compounds." },
-  { q: "What industries do you work with?", a: "Marketing agencies, web development agencies, AI automation agencies, SaaS companies, B2B service businesses, consultancies, SEO agencies, and GoHighLevel agencies. Any business depending on outbound to find clients benefits from the system." },
-  { q: "Do I need any technical knowledge?", a: "No. We build, manage, and optimize the entire system. You receive weekly reports and qualified replies in your inbox. The technical infrastructure runs behind the scenes." },
-  { q: "What software costs are separate?", a: "B2B prospect data (Apollo or similar, ~$50/month) and email sending (Smartlead or similar, ~$30-50/month). Total software is usually under $100/month. You own all accounts and data." },
+  { q: "What is the AI Sales Engine?", a: "A fully managed AI outbound system. We find 1,000 targeted prospects per month, generate a personalized interactive demo for each one, write AI-personalized emails, send automated follow-ups, optimize campaigns weekly, and deliver transparent reports. You focus on closing." },
+  { q: "How is this different from regular cold email?", a: "Cold email agencies send text with merge tags. We generate a personalized interactive demo for every prospect. Before the email arrives, each prospect has a working product built for their company. Demo engagement rates run 30-35% compared to 1-3% for generic cold email." },
+  { q: "How quickly do results start?", a: "Campaign launches in week 3. First qualified replies arrive within 5-7 days of launch." },
+  { q: "What industries do you work with?", a: "Marketing agencies, web dev agencies, AI automation agencies, SaaS companies, B2B service businesses, consultancies, SEO agencies, and GoHighLevel agencies. Any B2B business depending on outbound." },
+  { q: "Do I need technical knowledge?", a: "No. We build, manage, and optimize the entire system. You receive weekly reports and qualified replies in your inbox." },
+  { q: "What if I want to cancel?", a: "No long-term contracts. Month-to-month. You keep all tools, data, and accounts." },
 ];
+
+function Flow({ steps, tone }: { steps: string[]; tone: "error" | "secondary" }) {
+  return (
+    <div className="flex flex-col items-start gap-2">
+      {steps.map((step, i) => (
+        <div key={step} className="flex flex-col items-start gap-2">
+          <span
+            className={`px-4 py-2 rounded-lg text-body-sm border ${
+              tone === "error"
+                ? "bg-surface-container-lowest border-error/20 text-on-surface-variant"
+                : "bg-secondary/10 border-secondary/30 text-on-surface"
+            }`}
+          >
+            {step}
+          </span>
+          {i < steps.length - 1 && (
+            <span className={`material-symbols-outlined text-sm pl-4 ${tone === "error" ? "text-error" : "text-secondary"}`}>arrow_downward</span>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -99,39 +116,32 @@ export default function HomePage() {
         <div className="max-w-container mx-auto relative z-10 space-y-stack-lg">
           <Tag>AI-POWERED OUTBOUND</Tag>
           <h1 className="text-h1-mobile lg:text-h1-desktop text-on-surface tracking-tight max-w-3xl">
-            Stop Chasing Clients. Build an <span className="text-gradient-blue">AI Sales System</span> That Brings Qualified Leads to You Every Month.
+            Stop Chasing Clients. Build an <span className="text-gradient-blue">AI Sales Engine</span> That Books Meetings for You.
           </h1>
           <p className="text-body lg:text-lg text-on-surface-variant max-w-2xl">
-            We build AI-powered outbound systems that find your ideal prospects, generate a personalized interactive demo for every company, send highly personalized outreach, and automatically follow up. Your team spends less time prospecting and more time closing deals.
+            We find your ideal prospects, generate a personalized interactive demo for every company, send AI-written outreach, and deliver qualified conversations to your inbox. Every month.
           </p>
-          <p className="text-body-sm font-mono text-outline uppercase tracking-wider">No generic cold emails. No mass spam. Personalized outreach at scale.</p>
+          <p className="text-body-sm font-mono text-outline uppercase tracking-wider">No generic cold emails. No templates. Personalized outreach at scale.</p>
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <a href="https://calendly.com/islam9039438/30min" target="_blank" rel="noopener noreferrer" className="bg-primary text-on-primary py-4 px-8 rounded-lg font-bold text-center active:scale-95 transition-all shadow-lg shadow-primary/10">
-              Book Your Free Strategy Call
+            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="bg-primary text-on-primary py-4 px-8 rounded-lg font-bold text-center active:scale-95 transition-all shadow-lg shadow-primary/10">
+              Book a Free Strategy Call
             </a>
             <Link href="/case-studies" className="border border-primary/20 text-primary py-4 px-8 rounded-lg font-bold text-center hover:bg-primary/5 active:scale-95 transition-all">
               See Case Studies
             </Link>
           </div>
-          <div className="pt-stack-xl flex flex-col items-start gap-4 border-t border-outline-variant/10">
-            <p className="text-tag-label font-mono text-outline uppercase tracking-widest">Trusted by agencies and service businesses across</p>
-            <div className="flex flex-wrap gap-8 opacity-50 text-on-surface-variant">
-              <span className="font-bold">USA</span>
-              <span className="font-bold">Australia</span>
-              <span className="font-bold">UK</span>
-              <span className="font-bold">UAE</span>
-            </div>
+          <div className="pt-stack-xl border-t border-outline-variant/10">
+            <p className="text-tag-label font-mono text-outline uppercase tracking-widest">
+              Working with agencies and B2B businesses across USA · UK · Australia · UAE
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Pain Point */}
+      {/* The Problem */}
       <section className="px-6 lg:px-10 py-section-mobile lg:py-section-desktop bg-surface">
         <div className="max-w-container mx-auto space-y-stack-xl">
-          <div>
-            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface max-w-2xl">Your Sales Team Shouldn&apos;t Spend Hours Looking for Clients</h2>
-            <p className="text-body text-on-surface-variant mt-stack-sm max-w-2xl">Most businesses lose dozens of potential customers every month because their sales process depends on manual work.</p>
-          </div>
+          <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface max-w-2xl">Your Outbound Is Broken</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {painPoints.map((p) => (
               <li key={p} className="flex items-center gap-3 p-4 bg-surface-container-low border border-outline-variant/10 rounded-lg text-body-sm text-on-surface-variant">
@@ -141,7 +151,7 @@ export default function HomePage() {
             ))}
           </ul>
           <p className="text-body text-on-surface-variant max-w-2xl">
-            Meanwhile your competitors are already reaching those same businesses. BuildXAgent automates your outbound process from prospect discovery to booked meetings.
+            You spend more time looking for clients than serving them. The AI Sales Engine fixes that.
           </p>
         </div>
       </section>
@@ -150,11 +160,10 @@ export default function HomePage() {
       <section className="px-6 lg:px-10 py-section-mobile lg:py-section-desktop bg-surface-container-low">
         <div className="max-w-container mx-auto space-y-stack-xl">
           <div>
-            <Tag>OUR FLAGSHIP OFFER</Tag>
+            <Tag>WHAT YOU GET EVERY MONTH</Tag>
             <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm">The AI Sales Engine</h2>
-            <p className="text-body text-on-surface-variant mt-stack-sm max-w-lg">Everything you need to consistently generate qualified outbound opportunities.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {offerCards.map((c) => (
               <Reveal key={c.title}>
                 <div className="p-6 lg:p-8 bg-surface-container-lowest border border-outline-variant/20 rounded-xl hover:border-primary/40 transition-all duration-300 h-full flex flex-col">
@@ -175,35 +184,21 @@ export default function HomePage() {
         <div className="max-w-container mx-auto space-y-stack-xl">
           <div>
             <Tag>THE DIFFERENCE</Tag>
-            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm max-w-2xl">Most Agencies Send Emails. We Build Experiences.</h2>
-            <p className="text-body text-on-surface-variant mt-stack-sm max-w-2xl">
-              Anyone personalizes a first name. Very few agencies personalize the entire buying experience. Before your prospect even replies, they have already experienced a version of your product built specifically for them.
-            </p>
+            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm max-w-2xl">We Don&apos;t Send Emails. We Send Experiences.</h2>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 lg:p-8 bg-surface-container-low border border-error/20 rounded-xl opacity-70">
-              <p className="text-tag-label font-mono text-error uppercase tracking-widest mb-stack-md">Traditional Outreach</p>
-              <div className="flex flex-wrap items-center gap-2 text-body-sm text-on-surface-variant">
-                {["Company", "Generic Email", "Ignored", "Lost"].map((step, i, arr) => (
-                  <span key={step} className="flex items-center gap-2">
-                    {step}
-                    {i < arr.length - 1 && <span className="material-symbols-outlined text-error text-sm">arrow_forward</span>}
-                  </span>
-                ))}
-              </div>
+              <p className="text-tag-label font-mono text-error uppercase tracking-widest mb-stack-md">Everyone Else</p>
+              <Flow steps={everyoneElse} tone="error" />
             </div>
             <div className="p-6 lg:p-8 glass-card glow-accent border-secondary/20 rounded-xl">
-              <p className="text-tag-label font-mono text-secondary uppercase tracking-widest mb-stack-md">Our System</p>
-              <div className="flex flex-wrap items-center gap-2 text-body-sm text-on-surface">
-                {["Company", "AI Research", "Personalized Demo", "Personalized Email", "Automated Follow-Ups", "Qualified Reply"].map((step, i, arr) => (
-                  <span key={step} className="flex items-center gap-2">
-                    {step}
-                    {i < arr.length - 1 && <span className="material-symbols-outlined text-secondary text-sm">arrow_forward</span>}
-                  </span>
-                ))}
-              </div>
+              <p className="text-tag-label font-mono text-secondary uppercase tracking-widest mb-stack-md">BuildXAgent</p>
+              <Flow steps={buildXAgent} tone="secondary" />
             </div>
           </div>
+          <p className="text-body lg:text-lg text-on-surface max-w-2xl">
+            <span className="text-error font-bold">1-3%</span> reply rate vs <span className="text-secondary font-bold">30-35%</span> demo engagement. The difference is the demo.
+          </p>
         </div>
       </section>
 
@@ -212,7 +207,7 @@ export default function HomePage() {
         <div className="max-w-container mx-auto space-y-stack-xl">
           <div>
             <Tag>THE PROCESS</Tag>
-            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm">Live in 3 Weeks. Results From Week 1.</h2>
+            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm">Live in 3 Weeks</h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
             {howItWorks.map((s, i) => (
@@ -220,7 +215,7 @@ export default function HomePage() {
                 <div className="relative flex lg:flex-col items-start gap-6">
                   <div className="relative z-10 flex-shrink-0">
                     <div className="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center">
-                      <span className="font-mono text-gradient-blue font-bold text-xs">{s.label}</span>
+                      <span className="material-symbols-outlined text-secondary">{s.icon}</span>
                     </div>
                   </div>
                   <div className="space-y-2 pt-1">
@@ -246,22 +241,22 @@ export default function HomePage() {
               <div className="relative z-10 space-y-stack-md">
                 <Tag color="tertiary">CLIENT RESULTS</Tag>
                 <div>
-                  <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface">How a Melbourne Agency Built a Predictable Sales Pipeline</h2>
+                  <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface">How a Melbourne Agency Built a Predictable Pipeline</h2>
                   <p className="text-tag-label font-mono text-outline flex items-center gap-1 mt-1">
                     <span className="material-symbols-outlined text-sm">location_on</span> Optimo Agency · Craig Kelly · Melbourne, Australia
                   </p>
                 </div>
-                <p className="text-body-sm text-on-surface-variant max-w-2xl">
-                  Craig sold AI estimators to trade businesses. Manual prospecting limited him to 10-15 pitches per day. We built his AI Sales Engine. Now his system finds qualified trade businesses, generates personalized estimator demos, and sends AI-written outreach automatically. His calendar fills with qualified calls while his team focuses on closing.
-                </p>
-                <ul className="grid grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-                  {caseStudyResults.map((r) => (
-                    <li key={r} className="flex items-start gap-2 text-body-sm text-on-surface-variant">
-                      <span className="material-symbols-outlined text-secondary text-lg flex-shrink-0">trending_up</span>
-                      <span>{r}</span>
+                <ul className="grid grid-cols-2 lg:grid-cols-5 gap-4 pt-2">
+                  {caseStudyStats.map((s) => (
+                    <li key={s.label} className="p-4 bg-surface-container-low border border-outline-variant/10 rounded-lg">
+                      <p className="text-h3-mobile lg:text-h3-desktop font-bold text-secondary">{s.value}</p>
+                      <p className="text-body-sm text-on-surface-variant">{s.label}</p>
                     </li>
                   ))}
                 </ul>
+                <p className="text-body-sm text-on-surface-variant max-w-2xl">
+                  Craig Kelly runs Optimo Agency in Melbourne. He sold AI estimators to trade businesses. Manual prospecting limited him to 10-15 pitches per day. We built his AI Sales Engine. Now qualified conversations land in his inbox while his team focuses on closing.
+                </p>
                 <Link href="/case-studies" className="text-secondary font-bold flex items-center gap-1 w-fit hover:gap-2 transition-all pt-2">
                   Read Full Case Study <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </Link>
@@ -276,7 +271,7 @@ export default function HomePage() {
         <div className="max-w-container mx-auto space-y-stack-xl">
           <div>
             <Tag>BUILT FOR</Tag>
-            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm max-w-2xl">If Your Business Depends on Finding New Clients, This System Was Built for You</h2>
+            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm max-w-2xl">If You Sell to Other Businesses, This Is for You</h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {audiences.map((a) => (
@@ -291,53 +286,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Social Proof / Vision */}
-      <section className="px-6 lg:px-10 py-section-mobile lg:py-section-desktop bg-surface-container-low">
-        <div className="max-w-container mx-auto space-y-stack-xl">
-          <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface max-w-2xl">Imagine Waking Up Every Morning to Qualified Prospects Already Replying</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="p-6 lg:p-8 bg-surface-container-lowest border border-error/20 rounded-xl space-y-4">
-              {before.map((b) => (
-                <div key={b} className="flex items-center gap-3 text-body-sm text-on-surface-variant">
-                  <span className="material-symbols-outlined text-error flex-shrink-0">close</span>
-                  {b}
-                </div>
-              ))}
-            </div>
-            <div className="p-6 lg:p-8 glass-card glow-accent border-secondary/20 rounded-xl space-y-4">
-              {after.map((a) => (
-                <div key={a} className="flex items-center gap-3 text-body-sm text-on-surface">
-                  <span className="material-symbols-outlined text-secondary flex-shrink-0">check_circle</span>
-                  {a}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing */}
       <section className="px-6 lg:px-10 py-section-mobile lg:py-section-desktop bg-surface">
         <div className="max-w-container mx-auto space-y-stack-xl">
           <div>
             <Tag>INVESTMENT</Tag>
-            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm">Simple. Transparent. No Hidden Costs.</h2>
+            <h2 className="text-h2-mobile lg:text-h2-desktop text-on-surface mt-stack-sm">Simple Pricing. No Hidden Costs.</h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="glass-card rounded-xl p-6 lg:p-8 space-y-stack-md">
               <p className="text-tag-label font-mono text-outline uppercase tracking-widest">One-Time Setup</p>
               <p className="text-h1-mobile lg:text-h1-desktop text-on-surface">$400</p>
-              <p className="text-body-sm text-on-surface-variant">Covers prospect research configuration, demo template design, email infrastructure warmup, and CRM integration.</p>
+              <p className="text-body-sm text-on-surface-variant">Prospect research setup, demo template design, email infrastructure warmup, CRM integration.</p>
             </div>
             <div className="glass-card glow-accent border-secondary/20 rounded-xl p-6 lg:p-8 space-y-stack-md relative overflow-hidden">
-              <span className="chip-glow inline-block px-3 py-1 rounded-full text-tag-label font-mono text-secondary uppercase tracking-widest w-fit">Limited early client spots available</span>
-              <p className="text-tag-label font-mono text-outline uppercase tracking-widest">Launch Offer</p>
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-tag-label font-mono text-outline uppercase tracking-widest">Monthly</p>
+                <span className="chip-glow inline-block px-3 py-1 rounded-full text-tag-label font-mono text-secondary uppercase tracking-widest">Launch Offer</span>
+              </div>
               <p className="text-h1-mobile lg:text-h1-desktop text-on-surface">$500<span className="text-h3-mobile text-on-surface-variant">/month</span></p>
-              <p className="text-body-sm text-on-surface-variant">Everything included: 1,000 targeted prospects, AI research, personalized demos, AI emails, automated follow-ups, weekly optimization, weekly reporting.</p>
+              <p className="text-body-sm text-on-surface-variant">Everything included: 1,000 prospects, AI research, personalized demos, AI emails, follow-ups, weekly optimization, weekly reporting.</p>
             </div>
           </div>
           <p className="text-body-sm text-on-surface-variant max-w-2xl">
-            Software costs are billed separately and usually remain under $100/month depending on campaign size. You own all your tools and data.
+            Software costs (Apollo, Smartlead) billed separately. Usually under $100-150/month. You own all accounts and data.
           </p>
         </div>
       </section>
@@ -354,8 +326,8 @@ export default function HomePage() {
       </section>
 
       <CTASection
-        title="Your Next Client Could Already Be Waiting"
-        subheading="The only question is whether your competitors reach them first. Build an AI Sales System generating qualified opportunities around the clock."
+        title="Your Next Client Is Already Out There"
+        subheading="The question is whether your competitors reach them first."
       />
     </>
   );

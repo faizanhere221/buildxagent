@@ -5,18 +5,18 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://buildxagent.com"),
-  title: { default: "AI-Powered Outbound System That Books Sales Meetings | BuildXAgent", template: "%s | BuildXAgent" },
-  description: "We build AI outbound systems that find your ideal prospects, generate personalized interactive demos, send AI-written emails, and book qualified meetings. $400 setup + $500/mo.",
+  title: { default: "AI Outbound System That Books Sales Meetings | BuildXAgent", template: "%s | BuildXAgent" },
+  description: "We build AI outbound systems that find prospects, generate personalized demos, send AI emails, and book qualified meetings. $400 setup + $500/mo.",
   keywords: ["AI outbound system", "personalized AI demos", "AI lead generation for agencies", "automated outbound", "AI sales system"],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://buildxagent.com",
     siteName: "BuildXAgent",
-    title: "AI-Powered Outbound System That Books Sales Meetings | BuildXAgent",
+    title: "AI Outbound System That Books Sales Meetings | BuildXAgent",
     description: "We build AI outbound systems that find your ideal prospects, generate personalized interactive demos, send AI-written emails, and book qualified meetings.",
   },
-  twitter: { card: "summary_large_image", title: "BuildXAgent", description: "AI Automation Agency for Businesses" },
+  twitter: { card: "summary_large_image", title: "BuildXAgent", description: "AI outbound systems with personalized demos that book qualified sales meetings." },
   robots: { index: true, follow: true },
   alternates: { canonical: "https://buildxagent.com" },
 };
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               founder: { "@type": "Person", name: "Faizan Islam" },
               contactPoint: { "@type": "ContactPoint", email: "hello@buildxagent.com", contactType: "sales" },
               areaServed: ["United States", "United Kingdom", "Australia", "United Arab Emirates"],
-              description: "AI-powered outbound systems that find ideal prospects, generate personalized interactive demos, send AI-written emails, and book qualified sales meetings.",
+              description: "AI-powered outbound growth agency building personalized demo systems that book qualified sales meetings for agencies and B2B businesses.",
             }),
           }}
         />

@@ -11,10 +11,9 @@ export default function Footer() {
       <nav className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-x-12 gap-y-4">
         <Link href="/#how-it-works" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">How It Works</Link>
         <Link href="/case-studies" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">Case Studies</Link>
-        <Link href="/blog" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">Blog</Link>
         <Link href="/about" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">About</Link>
         <Link href="/contact" className="text-tag-label font-mono text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">Contact</Link>
-        <a href="https://calendly.com/islam9039438/30min" target="_blank" rel="noopener noreferrer" className="text-tag-label font-mono text-secondary font-medium hover:text-primary transition-colors uppercase tracking-widest">Book Call</a>
+        <a href="https://calendly.com/islam9039438/30min" target="_blank" rel="noopener noreferrer" className="text-tag-label font-mono text-secondary font-medium hover:text-primary transition-colors uppercase tracking-widest">Book a Call</a>
       </nav>
 
       <div className="w-12 h-px bg-outline-variant/30" />

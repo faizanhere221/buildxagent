@@ -1,6 +1,6 @@
 export default function CTASection({
-  title = "Your Next Client Could Already Be Waiting",
-  subheading = "The only question is whether your competitors reach them first. Build an AI Sales System generating qualified opportunities around the clock.",
+  title = "Your Next Client Is Already Out There",
+  subheading = "The question is whether your competitors reach them first. Build an AI Sales Engine generating qualified conversations every month.",
 }: {
   title?: string;
   subheading?: string;
